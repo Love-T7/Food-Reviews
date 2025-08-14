@@ -259,7 +259,7 @@ with tab1:
     st.write("Emotion distribution in the sample:")
     st.bar_chart(df_labeled['emotion'].value_counts())
 
-TAB 2: EMOTION DETECTION AND MODEL PERFORMANCE
+#TAB 2: EMOTION DETECTION AND MODEL PERFORMANCE
 with tab2:
 
     st.subheader("😊 Emotion Detection")
