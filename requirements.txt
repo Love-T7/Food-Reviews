@@ -11,6 +11,7 @@ datasets>=2.19
 accelerate>=0.30
 safetensors>=0.4
 sentencepiece>=0.2
+mysql-connector-python>=8.0
 
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch
