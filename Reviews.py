@@ -120,31 +120,12 @@ def load_data():
     url = "https://drive.google.com/uc?export=download&id=1Vgh5lYaTGdH9oaVuZncIdTjO18tk5aXA"
     df = pd.read_csv(url)
 
-    # Debug: show original column names
-    st.write("Columns found:", list(df.columns))
+     st.write("First 5 rows from file:")
+    st.dataframe(df.head())  # show preview in Streamlit
 
-    # Common possible names for the review text column
-    possible_names = ["text", "review", "summary", "content", "review_text", "body"]
-    found = None
+    st.write("Column names:", list(df.columns))  # show all column names
 
-    # Find matching column (case-insensitive, ignore spaces)
-    for col in df.columns:
-        if col.strip().lower() in possible_names:
-            found = col
-            break
-
-    if found:
-        df = df.rename(columns={found: "Text"})
-        st.success(f"✅ Renamed '{found}' to 'Text'")
-    else:
-        st.error("❌ No text column found in dataset.")
-        return pd.DataFrame()
-
-    # Sample up to 5000 rows
-    sample_size = min(5000, len(df))
-    df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
-
-    return df_sample
+    return df
     # Sample up to 5000 rows, or all rows if fewer than 5000
     #sample_size = min(5000, len(df))
     #df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
