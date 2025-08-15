@@ -117,14 +117,8 @@ st.markdown("""
 #Load Dataset
 @st.cache_data
 def load_data():
-    try:
-        url = " https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews"
-        df = pd.read_csv(url)
-
-        return df
-    except Exception as e:
-        st.error(f"Error loading from Kaggle: {str(e)}")
-        return None
+        df = pd.read_csv(Reviews_7k.csv)
+        
     # Sample up to 5000 rows, or all rows if fewer than 5000
     #sample_size = min(5000, len(df))
     #df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
