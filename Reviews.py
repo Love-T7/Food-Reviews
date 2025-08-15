@@ -120,8 +120,9 @@ def load_data():
     url = "https://drive.google.com/uc?export=download&id=1Vgh5lYaTGdH9oaVuZncIdTjO18tk5aXA"
     df = pd.read_csv(url)
  
-    # Create a reproducible random sample for consistent results
-    df_sample = df.sample(5000, random_state=42).reset_index(drop=True)
+    # Sample up to 5000 rows, or all rows if fewer than 5000
+    sample_size = min(5000, len(df))
+    df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
     return df_sample
 
 # Load the sample dataset
