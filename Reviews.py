@@ -117,10 +117,11 @@ st.markdown("""
 #Load Dataset
 @st.cache_data
 def load_data():
-    url = " https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews"
-    df = pd.read_csv(url)
+    try:
+        url = " https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews"
+        df = pd.read_csv(url)
 
-    return df
+        return df
     except Exception as e:
         st.error(f"Error loading from Kaggle: {str(e)}")
         return None
