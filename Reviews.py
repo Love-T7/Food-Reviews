@@ -117,15 +117,13 @@ st.markdown("""
 #Load Dataset
 @st.cache_data
 def load_data():
-    url = "https://drive.google.com/uc?export=download&id=1Vgh5lYaTGdH9oaVuZncIdTjO18tk5aXA"
+    url = " https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews"
     df = pd.read_csv(url)
 
-     st.write("First 5 rows from file:")
-    st.dataframe(df.head())  # show preview in Streamlit
-
-    st.write("Column names:", list(df.columns))  # show all column names
-
     return df
+    except Exception as e:
+        st.error(f"Error loading from Kaggle: {str(e)}")
+        return None
     # Sample up to 5000 rows, or all rows if fewer than 5000
     #sample_size = min(5000, len(df))
     #df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
