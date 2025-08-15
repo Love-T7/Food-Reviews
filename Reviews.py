@@ -117,7 +117,7 @@ st.markdown("""
 #Load Dataset
 @st.cache_data
 def load_data():
-        df = pd.read_csv(Reviews_7k.csv)
+        df = pd.read_csv("Reviews_7k.csv")
         
     # Sample up to 5000 rows, or all rows if fewer than 5000
     #sample_size = min(5000, len(df))
