@@ -119,7 +119,12 @@ st.markdown("""
 def load_data():
     url = "https://drive.google.com/uc?export=download&id=1Vgh5lYaTGdH9oaVuZncIdTjO18tk5aXA"
     df = pd.read_csv(url)
- 
+    
+    if not any(col.strip().lower() == "text" for col in df.columns):
+        st.error("❌ No 'Text' column found in dataset.")
+        st.write("Columns available:", list(df.columns))
+        return pd.DataFrame()  # empty dataframe
+        
     # Sample up to 5000 rows, or all rows if fewer than 5000
     sample_size = min(5000, len(df))
     df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
