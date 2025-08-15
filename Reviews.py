@@ -121,9 +121,20 @@ def load_data():
     df = pd.read_csv(url)
         
     # Sample up to 5000 rows, or all rows if fewer than 5000
-    sample_size = min(5000, len(df))
-    df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
-    return df_sample
+    #sample_size = min(5000, len(df))
+    #df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
+    #return df_sample
+
+    text_col = None
+    for col in df.columns:
+        if col.strip().lower() in ["text", "review", "content"]:
+            text_col = col
+            break
+    if text_col is None:
+        st.error("❌ No text/review column found in dataset.")
+        st.write("Columns in file:", list(df.columns))
+        return pd.DataFrame()
+    df = df.rename(columns={text_col: "Text"})
 
 # Load the sample dataset
 df_reviews = load_data()
