@@ -117,7 +117,9 @@ st.markdown("""
 #Load Dataset
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Reviews.csv")
+    url = "https://drive.google.com/uc?export=download&id=1Vgh5lYaTGdH9oaVuZncIdTjO18tk5aXA"
+    df = pd.read_csv(url)
+ 
     # Create a reproducible random sample for consistent results
     df_sample = df.sample(5000, random_state=42).reset_index(drop=True)
     return df_sample
