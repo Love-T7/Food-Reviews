@@ -121,8 +121,8 @@ def load_data():
         
     # Sample up to 5000 rows, or all rows if fewer than 5000
     #sample_size = min(5000, len(df))
-    #df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
-    #return df_sample
+    df_sample = df.sample(sample_size, random_state=42).reset_index(drop=True)
+    return df_sample
 
 # Load the sample dataset
 df_reviews = load_data()
